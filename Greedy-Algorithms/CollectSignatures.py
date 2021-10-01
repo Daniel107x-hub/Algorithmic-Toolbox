@@ -9,7 +9,7 @@ def optimal_points(segments):
     points = []
     segments.sort(key=my_compare,reverse=False)
     current_segment_index=0
-    while current_segment_index<len(segments)-1:
+    while current_segment_index<len(segments):
         right=segments[current_segment_index][1]
         while current_segment_index<len(segments)-1 and segments[current_segment_index+1][0]<=right:
             current_segment_index+=1

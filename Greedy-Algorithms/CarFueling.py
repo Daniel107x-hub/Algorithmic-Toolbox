@@ -11,7 +11,7 @@ def compute_min_refills(distance, tank, stops):
     while last_stop<len(stops)-2:
         capacity=tank
         last_refuel=last_stop
-        while last_stop<len(stops)-1 and stops[last_stop+1]-stops[last_refuel]<capacity:
+        while last_stop<len(stops)-1 and stops[last_stop]-stops[last_refuel]<capacity:
             last_stop+=1
         if last_stop==last_refuel:
             return -1
