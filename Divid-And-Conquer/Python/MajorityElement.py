@@ -35,6 +35,8 @@ def findMajority(A):
     return 0
 
 if __name__ == '__main__':
-    A=[4,4,2,1,3,4,4,2,4]
+    number=int(input())
+    list_string=input().split()
+    A=[int(element) for element in list_string]
     result = findMajority(A)
     print(result)

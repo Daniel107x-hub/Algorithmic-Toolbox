@@ -20,10 +20,10 @@ def solver(N,K):
     return solution
 
 if __name__ == '__main__':
+    number=int(input())
     n = [int(element) for element in input().split()]
+    number=int(input())
     k = [int(element) for element in input().split()]
-    n.pop(0)
-    k.pop(0)
     solution=solver(n,k)
     for element in solution:
         print(element,end=' ')
