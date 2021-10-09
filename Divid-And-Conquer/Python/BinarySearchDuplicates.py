@@ -21,7 +21,6 @@ def solver(N,K):
     return solution
 
 if __name__ == '__main__':
-
     number=int(input())
     n = [int(element) for element in input().split()]
     number=int(input())
