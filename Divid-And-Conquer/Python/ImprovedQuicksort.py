@@ -24,13 +24,13 @@ def swapList(A,from_1,to_1,from_2,to_2):
 
 
 def partition3(A,start,end):
-    pivot = random.randint(start,end)
+    pivot=end
     A[pivot], A[end] = A[end], A[pivot]
     minor = start-1
     last_similar = end
     i=start
     while i<last_similar:
-        while A[i] == A[last_similar] and i!=last_similar:
+        while A[i] == A[last_similar] and i != last_similar:
             last_similar -= 1
             A[i], A[last_similar] = A[last_similar], A[i]
         if A[i] < A[last_similar]:

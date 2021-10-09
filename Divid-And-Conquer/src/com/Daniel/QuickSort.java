@@ -126,7 +126,7 @@ public class QuickSort {
     }
 
     public static void testSort3(){
-        List<Integer> A=new ArrayList<Integer>(Arrays.asList(1,2,2,5,4,3,3,3,2,1,1));
+        List<Integer> A=new ArrayList<Integer>(Arrays.asList(10,9,8,7,6,5,4,3,2,1));
         sort3(A,0,A.size()-1);
         for(int element:A){
             System.out.print(element+" ");
