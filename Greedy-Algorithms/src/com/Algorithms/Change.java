@@ -1,35 +1,25 @@
 package com.Algorithms;
 
+import java.util.Scanner;
+
 public class Change {
-    private static final int[] coins=new int[]{10,5,1};
+    private static int[] coins = {1,5,10};
 
-    private static int getArraySum(int[] array){
-        int sum=0;
-        for(int element:array){
-            sum+=element;
-        }
-        return sum;
+    public static void main(String args[]){
+        Scanner scanner = new Scanner(System.in);
+        int m = scanner.nextInt();
+        System.out.println(String.valueOf(getChange(m,coins.length-1)));
     }
 
-    public static int getChange(int number){
-        int[] cantidades=new int[]{0,0,0};
-        for(int i=0;i<coins.length;i++){
-            cantidades[i]=Math.floorDiv(number,coins[i]);
-            number=number%coins[i];
+    private static int getChange(int money, int coin){
+        while(money>0){
+            while(money<coins[coin]){
+                coin--;
+            }
+            int takenCoins = money/coins[coin];
+            return takenCoins+getChange(money-takenCoins*coins[coin], coin);
         }
-        return getArraySum(cantidades);
+        return 0;
     }
 
-    public static void testGetChange(){
-        int result=getChange(2);
-        if(result!=2){
-            System.out.println("Error: "+result);
-        }
-        System.out.println("OK");
-        result=getChange(28);
-        if(result!=6){
-            System.out.println("Error: "+result);
-        }
-        System.out.println("OK");
-    }
 }
