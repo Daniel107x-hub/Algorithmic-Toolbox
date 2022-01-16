@@ -1,18 +1,7 @@
 def gives_more_or_equal_value(number1, number2):
-    i = 0
-    j = 0
-    while i <= len(number1)-1 and j <= len(number2)-1:
-        if int(number1[i]) > int(number2[j]):
-            return True
-        elif int(number1[i]) < int(number2[j]):
-            return False
-        else:
-            if i == len(number1)-1 and j == len(number2)-1:
-                return True
-            if i < len(number1)-1:
-                i += 1
-            if j < len(number2)-1:
-                j += 1
+    option1 = int(number1 + number2)
+    option2 = int(number2 + number1)
+    return option1 >= option2
 
 def get_maximum_salary(numbers):
     if len(numbers) > 0:
