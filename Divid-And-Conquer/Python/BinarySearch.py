@@ -1,30 +1,31 @@
 # Uses python3
 import sys
 
-def binary_search(N, start, end, k):
-    if start>end:
-        return -1
-    mid = (start+end)//2
-    if N[mid] == k:
-        return mid
-    elif N[mid] > k:
-        return binary_search(N, start, mid-1, k)
-    else:
-        return binary_search(N, mid+1, end, k)
+def binary_search(list, start, end, number):
+    if start <= end:
+        q = int((start + end) / 2)
+        if list[q] == number:
+            return q
+        elif list[q] > number:
+            return binary_search(list, start, q-1, number)
+        else:
+            return binary_search(list, q+1, end, number)
+    return -1
 
-def solver(N,K):
-    solution=list()
-    for element in K:
-        index=binary_search(N,0,len(N)-1,element)
-        solution.append(index)
-    return solution
+def solver(list, numbers):
+    results = []
+    for number in numbers:
+        result = binary_search(list, 0, len(list)-1, number)
+        results.append(result)
+    return results
 
 if __name__ == '__main__':
-    number=int(input())
-    n = [int(element) for element in input().split()]
-    number=int(input())
-    k = [int(element) for element in input().split()]
-    solution=solver(n,k)
-    for element in solution:
-        print(element,end=' ')
+    first_line = input().split()
+    n_elements = int(first_line.pop(0))
+    list = [int(element) for element in first_line]
+    second_line = input().split()
+    k_elements = int(second_line.pop(0))
+    numbers = [int(element) for element in second_line]
+    result = solver(list, numbers)
+    [print(element,end=' ') for element in result]
 

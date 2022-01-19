@@ -2,41 +2,37 @@
 import math
 import sys
 
-def merge(izq,der):
-    result = list()
-    while len(izq) > 0 and len(der) > 0:
-        if izq[0] < der[0]:
-            result.append(izq.pop(0))
-        else:
-            result.append(der.pop(0))
-    result.extend(izq if len(izq) > 0 else der)
-    return result
 
-def mergesort(A,start,end):
-    if start==end:
-        return [A[start]]
-    mid=math.floor((start+end)/2)
-    izq=mergesort(A,start,mid)
-    der=mergesort(A,mid+1,end)
-    return merge(izq,der)
+def count(numbers, start, end,  x):
+    counter = 0
+    for number in numbers[start:end+1]:
+        if number == x:
+            counter += 1
+    return counter
 
-def findMajority(A):
-    A = mergesort(A,0,len(A)-1)
-    curr_element = -1
-    curr_freq = 0
-    for element in A:
-        if curr_element == -1 or curr_element != element:
-            curr_element = element
-            curr_freq = 0
-        if element == curr_element:
-            curr_freq += 1
-        if curr_freq  > len(A)/2:
-            return 1
-    return 0
 
-if __name__ == '__main__':
-    number=int(input())
-    list_string=input().split()
-    A=[int(element) for element in list_string]
-    result = findMajority(A)
-    print(result)
+def find_majority(numbers, start, end):
+    if start < end:
+        q = (start + end) // 2
+        left_majority = find_majority(numbers, start, q)
+        right_majority = find_majority(numbers, q+1, end)
+        if left_majority == right_majority:
+            return left_majority
+        counter_left = count(numbers, start, end, left_majority)
+        counter_right = count(numbers, start, end, right_majority)
+        if counter_left > counter_right:
+            return left_majority
+        elif counter_right > counter_left:
+            return right_majority
+        return -1
+    return numbers[start]
+
+
+if __name__=="__main__":
+    n = int(input())
+    numbers = [int(number) for number in input().split()]
+    result = find_majority(numbers, 0, len(numbers)-1)
+    if result == -1:
+        print(0)
+    else:
+        print(1)
