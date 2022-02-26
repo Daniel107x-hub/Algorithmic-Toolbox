@@ -15,8 +15,8 @@ def lcs(s1, s2):
 
 if __name__ == "__main__":
     n = int(input())
-    str1 = input().replace(" ", "")
+    str1 = input().split(" ")
     m = int(input())
-    str2 = input().replace(" ", "")
+    str2 = input().split(" ")
     result = lcs(str1, str2)
     print(result)
