@@ -3,11 +3,11 @@ def lcs(s1, s2):
     for i in range(0, len(s2)):
         for j in range(0, len(s1)):
             d = max(
-                sizes[i][j],
                 sizes[i + 1][j],
                 sizes[i][j + 1]
             )
             if s2[i] == s1[j]:
+                d = sizes[i][j]
                 d += 1
             sizes[i + 1][j + 1] = d
     return sizes[len(s2)][len(s1)]
